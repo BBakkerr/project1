@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+  <h2>Let AJAX change this text</h2>
+  <button type="button" onclick="loadDoc()">Change Content</button>
+
+</div>
+<img id="deltion">
+<script>
+  function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    //document.getElementById("demo").innerHTML = this.responseText;
+    document.getElementById("deltion").innerHTML = this.responseURL;
+    }
+  xhttp.open("GET", "deltion.webp", true);
+  xhttp.send();
+}
+</script>
+</body>
+</html>

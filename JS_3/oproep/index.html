@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<div id="autos">
+</div>
+<label for="toevoegen">Toevoegen</label>
+<input id="toevoegen" type="radio" name="action" name="add" checked onchange="toggleDiv(this)">
+<label for="updaten">Updaten</label>
+<input id="updaten" type="radio" name="action" name="update" onchange="toggleDiv(this)">
+<label for="verwijderen">Verwijderen</label>
+<input id="verwijderen" type="radio" name="action" name="delete" onchange="toggleDiv(this)">
+<br>
+<br>
+<div id="alter-array">
+<div id="addCar">
+<table>
+    <tr>
+        <td>
+            <label for="auto">Auto:</label>
+        </td>
+        <td>
+            <input name="toevoegen1" class="auto" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="prijs">Prijs:</label>
+        </td>
+        <td>
+            <input name="toevoegen2" class="prijs" type="number">
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <button onclick="addCar()">toevoegen</button>
+        </td>
+    </tr>
+</table>
+</div>
+<div id="updateCar">
+<table>
+    <tr>
+        <td>
+            <label for="id">id:</label>
+        </td>
+        <td>
+            <input name="updaten1" class="id" type="number" disabled>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="auto">Auto:</label>
+        </td>
+        <td>
+            <input name="updaten2" class="auto" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="prijs">Prijs:</label>
+        </td>
+        <td>
+            <input name="updaten3" class="prijs" type="number">
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <button id="saveButton" onclick="updateCar()">opslaan</button>
+        </td>
+    </tr>
+</table>
+<p id="message">Selecteer een auto die je wilt aanpassen!</p>
+<p id="warning-update">Selecteer eerst een auto en maak de auto en prijs velden niet leeg!</p>
+</div>
+<div id="deleteCar">
+<table>
+    <tr>
+        <td>
+            <label for="id">id:</label>
+        </td>
+        <td>
+            <input name="verwijderen" class="id" type="number">
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <button onclick="removeCar()">verwijderen</button>
+        </td>
+    </tr>
+</table>
+<p id="warning-delete">Er bestaat geen auto met deze id! Voer een geldige id in!</p>
+</div>
+</div>
+<div id="totaalprijs">
+ 
+</div>
+<script src="functions.js"></script>    
+</body>
+</html>

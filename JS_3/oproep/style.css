@@ -1,0 +1,26 @@
+#updateCar
+{
+    display: none;
+}
+ 
+#deleteCar
+{
+    display: none;
+}
+ 
+td
+{
+    min-width: 50px;
+}
+ 
+#message
+{
+    color: blue;
+}
+ 
+#warning-update, #warning-delete
+{
+    color: red;
+    display: none;
+}
+ 

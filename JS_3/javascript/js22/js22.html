@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tafelstyle.css">
+</head>
+
+<body>
+    <h1>Tafels</h1>
+    <label>Geef getal voor tafel:</label> <input type="text" id="tafels"><br>
+    <label>Geef op hoever</label><input type="text" id="max"><br>
+    <button onclick="showTable()">Geef de tafel</button>
+    <div id="Uitkomst">
+        <!-- UITKOMST -->
+    </div>
+
+</body>
+<div style="flex:3"></div>
+
+</html>
+<script>
+    function showTable() {
+        let element = document.getElementById('tafels');
+        let tafel = element.value;
+        let elementMax = document.getElementById('max');
+        let max = elementMax.value;
+        let tekst = "";
+        for (let i = 1; i <= max; i++) {
+            let getal = i * tafel;
+            tekst += "De som is " + i + " x " + tafel + " = " + getal + "<br>";
+
+
+        }
+        document.getElementById("Uitkomst").innerHTML = tekst;
+    }
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Output van in JS opgebouwde HTML (zie JS-script)
+    <button onclick="fStart()">Start</button>
+    <div id="output"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.0/axios.min.js"></script>
+<script>
+        function fStart() {
+            let url = 'https://15euros.nl/api/bier_basic.php';
+            /* console.log("in fStart. URL = " + url); */
+            axios.get(url)
+                .then((response) => {
+                    let beers = response.data;
+                    console.log("beers =", beers);
+                    fShow(beers)
+                })
+                .catch(function (error) {
+                    console.log("error=", error);
+                });
+        }
+        
+        fStart();
+
+        function fShow(beers) {
+            let html = "<table>";
+            for (let i = 0; i < beers.length; i++) {
+                html += "<tr>";
+                html += "<td>" + beers[i].name + "</td>";
+                html += "<td>" + beers[i].brouwer + "</td>";
+                html += "</tr>";
+            }
+            document.getElementById("output").innerHTML 
+             html += "</table>";
+        }
+</script> 
+</body>
+</html>

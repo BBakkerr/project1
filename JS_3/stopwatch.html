@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+.clock1 {
+    text-align: center;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.display {
+    font-size: 48px;
+    font-weight: bold;
+    border: 3px solid darkred;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 18px;
+    padding: 8px 15px;
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:nth-child(1) {
+    border-color: blue;
+    color: blue;
+}
+
+button:nth-child(1):focus {
+    outline: 2px solid blue;
+}
+
+button:nth-child(2) {
+    border-color: black;
+    color: black;
+}
+
+button:nth-child(3) {
+    border-color: gray;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+    <div class="clock1">
+        <h2>Timer with setInterval()</h2>
+        <div id="display">00:00:00</div>
+        <button onclick="fStart()">Start</button>
+        <button onclick="fStop()">Stop</button>
+        <button onclick="fReset()">Reset</button>
+        
+    </div>
+
+    <script>
+        let milisec = 0, sec = 0, min = 0;
+        let mijnInterval;
+
+        function fStart() {
+            if (!mijnInterval) { 
+                mijnInterval = setInterval(updateTimer, 10); 
+            }
+        }
+
+        function fStop() {
+            clearInterval(mijnInterval);
+            mijnInterval = null; 
+        }
+
+        function fReset() {
+            clearInterval(mijnInterval);
+            mijnInterval = null; 
+            milisec = sec = min = 0;
+            updateDisplay();
+        }
+
+        function updateTimer() {
+            milisec += 1;
+            if (milisec >= 99) {
+                milisec = 0;
+                sec++;
+            }
+            if (sec >= 60) {
+                sec = 0;
+                min++;
+            }
+            
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById("display").innerHTML = 
+                `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}:${String(milisec).padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>

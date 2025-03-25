@@ -1,0 +1,48 @@
+.flex-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.colorgame {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3, 50px);
+    gap: 5px;
+    text-align: center;
+}
+
+.blokje {
+    background-color: #f1f1f1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    cursor: pointer;  /* Zorgt ervoor dat gebruikers zien dat ze kunnen klikken */
+}
+
+#basiskleur {
+    grid-column: span 3;  /* Zorgt ervoor dat het basiskleurvak over 3 kolommen gaat */
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#testje {
+    display: block;
+    border: 1px solid black;
+    padding: 10px;
+    min-height: 50px;  /* Voorkomt dat het vakje te klein is bij geen output */
+    width: 150px;
+    margin-top: 10px;
+}

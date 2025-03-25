@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>BMI CALCULATOR JS</h1>
+    <div class="container">
+        <div><input type="number" id="height" onblur="CheckHeight()" placeholder="Geef je lengte in cm">
+            <p id="heightMessage"></p>
+        </div>
+        <input type="number" id="weight" onblur="CheckWeight()" placeholder="Geef je gewicht in kg">
+        <button onclick="calculateBMI()">Bereken</button>
+    </div>
+
+    <div>Resultaat</div>
+    <div id="result"></div>
+    <div id="bmitable"></div>
+    <script>
+        function calculateBMI() {
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+            let bmi = weight / ((height / 100) * (height / 100));
+
+            //alert ("Je BMI is: " + bmi);
+            //console.log("Je BMI is: " + bmi)
+            document.getElementById("result").innerHTML = "Je BMI is:   " + bmi
+        }
+
+        function CheckWeight() {
+            let weight = document.getElementById("weight").value;
+            if (weight > 199) {
+                document.getElementById("weight").style.border = "2px solid red";
+            } else {
+                document.getElementById("weight").style.border = "2px solid green";
+
+            }
+        }
+        function CheckHeight() {
+            if (document.getElementById("height").value == "") {
+                document.getElementById("heightMessage").innerHTML = "Lengte is verplicht!";
+            } else {
+                document.getElementById("heightMessage").innerHTML = "";
+            }
+
+
+        }
+        let jsonArrayBMICatergories = [
+            { "categorie": "lager dan 18,5", "naam": "Ondergewicht" },
+            { "categorie": "Vanaf 18,5 tot 25", "naam": "Gezond gewicht" },
+            { "categorie": "Vanaf 25 tot 30", "naam": "Overgewicht" },
+            { "categorie": "30 en hoger", "naam": "Ernstig overgewicht (obesitas)" }
+        ];
+
+        function ShowBMICategoryTable() {
+            let table = "<table border='1'>";
+            table += "<tr><th>Categorie</th><th>Naam</th></tr>";
+            for (let i = 0; i < jsonArrayBMICatergories.length; i++) {
+                table += "<tr>";
+                table += "<td>" + jsonArrayBMICatergories[i].categorie + "</td>";
+                table += "<td>" + jsonArrayBMICatergories[i].naam + "</td>";
+                table += "</tr>";
+            }
+            table += "</table>";
+            document.getElementById("bmiTable").innerHTML = table;
+        }        
+    </script>
+</body>
+
+</html>

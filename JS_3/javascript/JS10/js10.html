@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <li rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="output" id="output">
+        <div id="resultaat" style="margin-top: 20px; border: 1px solid black; padding: 10px;">
+        </div>
+        <table>
+            <tr>
+                <td>
+                    <label>Voornaam:</label> <input type="text" id="voornaam"> <br>
+                    <label>Achternaam:</label> <input type="text" id="achternaam"> <br>
+                    <label>leeftijd</label> <input type="number" id="age1"><br>
+                    <label>Over:</label> <input type="number" id="age2"><br>
+                    <button onclick="getal()">plaats tekst</button>
+                </td>
+            </tr>
+        </table>
+        
+    </div>
+
+
+    <script>
+        function getal() {
+            let voornaam = document.getElementById('voornaam').value;
+            let achternaam = document.getElementById('achternaam').value;
+            let age1 = parseInt(document.getElementById('age1').value) || 0;
+            let age2 = parseInt(document.getElementById('age2').value) || 0;
+
+            let totaleLeeftijd =  age1 + age2;
+
+            document.getElementById('resultaat').innerHTML = `
+                <p>Hallo ik ben ${voornaam} ${achternaam}.</p>
+                <p> Over ${age2} ben ik ${totaleLeeftijd} jaar!</p>
+            `;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
+
+<h1>Flexible Boxes</h1>
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+ 
+</div>
+<h2>Hoi</h2>
+<p>Try to resize the browser window.</p>
+<p>A container with "flex-wrap: nowrap;" will never wrap its items.</p>
+<button onclick="myFunction()" >Klikje op de neus</button>
+</body>
+</html>
+<script>
+  function myFunction(){
+    document.getElementById("testje").innerHTML
+  }
+</script>

@@ -1,0 +1,6 @@
+#Uitkomst {
+    border: solid 1px black;
+    min-height: 20vh;
+    width: 40vw;
+    overflow:scroll;
+}

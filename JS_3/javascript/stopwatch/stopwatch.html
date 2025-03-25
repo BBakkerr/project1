@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock1">
+        <h2>Stopwatch</h2>
+        <div id="display">00:00:00</div>
+        <button onclick="fStart()">Start</button>
+        <button onclick="fStop()">Stop</button>
+        <button onclick="fReset()">Reset</button>
+    </div>
+
+    <script>
+        let milisec = 0, sec = 0, min = 0;
+        let mijnInterval;
+
+        function fStart() {
+            if (!mijnInterval) { 
+                mijnInterval = setInterval(updateTimer, 10); 
+            }
+        }
+
+        function fStop() {
+            clearInterval(mijnInterval);
+            mijnInterval = null; 
+        }
+
+        function fReset() {
+            clearInterval(mijnInterval);
+            mijnInterval = null; 
+            milisec = sec = min = 0;
+            updateDisplay();
+        }
+
+        function updateTimer() {
+            milisec += 1;
+            if (milisec >= 99) {
+                milisec = 0;
+                sec++;
+            }
+            if (sec >= 60) {
+                sec = 0;
+                min++;
+            }
+            
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById("display").innerHTML = 
+                `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}:${String(milisec).padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>

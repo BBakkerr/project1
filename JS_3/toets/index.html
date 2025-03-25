@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Log in</h1>
+        <div>
+            <label for="inlognaam">Gebruikersnaam:</label>
+            <input type="text" id="login" placeholder="Gebruikersnaam" onkeyup="checkGebruikersnaam()">
+        </div>
+        <div>
+            <label for="wachtwoordnaam">Wachtwoord:</label>
+            <input type="password" id="wachtwoord" placeholder="Wachtwoord" onblur="checkWachtwoord()">
+            <p id="warningMessage" style="color: red; display: none;">Wachtwoord moet minimaal 10 tekens bevatten.</p>
+        </div>
+        <button onclick="login()">Log in</button>
+        <div id="result"></div>
+    </div>
+
+    <div id="deTabel"></div>
+
+    <script>
+        function checkGebruikersnaam() {
+            let inlognaam = document.getElementById("login").value;
+            if (inlognaam.length > 2) {
+                document.getElementById("login").style.border = "2px solid red";
+            } else {
+                document.getElementById("login").style.border = "2px solid green";
+            }
+        }
+
+        function checkWachtwoord() {
+            let wachtwoord = document.getElementById("wachtwoord").value;
+            let warningMessage = document.getElementById("warningMessage");
+
+            if (wachtwoord.length > 10) {
+                document.getElementById("wachtwoord").style.border = "2px solid red";
+                warningMessage.style.display = "block";
+            } else {
+                document.getElementById("wachtwoord").style.border = "2px solid green";
+                warningMessage.style.display = "none";
+            }
+        }
+       
+        let users = [
+            { "naam": "Chris", "wachtwoord": "Deltion12345!!" },
+            { "naam": "Kevin", "wachtwoord": "Deltion45678!!" },
+            { "naam": "Koos", "wachtwoord": "DeltionX12345!" },
+            { "naam": "Marloes", "wachtwoord": "DeltionY45678!" },
+            { "naam": "Ronald", "wachtwoord": "DeltionZ12345!" }
+        ];
+
+        function login() {
+            let zoeknaam = document.getElementById("login").value;
+            let zoekwachtwoord = document.getElementById("wachtwoord").value;
+            let resultDiv = document.getElementById("result");
+
+            for (let i = 0; i < users.length; i++) {
+                const user = users[i];
+
+                if (user.naam === zoeknaam && user.wachtwoord === zoekwachtwoord) {
+                    resultDiv.innerHTML = "<p style='color:green;'>Inloggen gelukt!</p>";
+                    return;
+                }
+            }
+            console.log(resultDiv.innerHTML = "Inloggen mislukt. Probeer opnieuw.");
+            resultDiv.innerHTML = "<p style='color:red;'>Inloggen mislukt. Probeer opnieuw.</p>";
+        }
+
+        function laadTabel() {
+            let table = "<table border='1'>";
+            table += "<tr><th>Gebruikers</th><th>Wachtwoord</th></tr>";
+
+            for (let i = 0; i < users.length; i++) {
+                table += "<tr>";
+                table += "<td>" + users[i].naam + "</td>";
+                table += `<td class="wachtwoord-blok" 
+                            onmouseover="showPassword(${i})" 
+                            onmouseout="hidePassword(${i})">***********</td>`;
+                table += "</tr>";
+            }
+
+            table += "</table>";
+            document.getElementById('deTabel').innerHTML = table;
+        }
+
+        function showPassword(index) {
+            let wachtwoordBlok = document.getElementsByClassName('wachtwoord-blok')[index];
+            wachtwoordBlok.innerHTML = users[index].wachtwoord;
+        }
+
+        function hidePassword(index) {
+            let wachtwoordBlok = document.getElementsByClassName('wachtwoord-blok')[index];
+            wachtwoordBlok.innerHTML = '***********';
+        }
+
+        window.onload = laadTabel;
+    </script>
+</body>
+
+</html>

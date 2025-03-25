@@ -1,0 +1,20 @@
+body {
+    background-color: lightgrey;
+}
+#resultText {
+    border:solid 1px red;
+    background-color: white;
+}
+
+.outputDivStyle {
+    border:solid 1px blue;
+    background-color: white;
+    border-radius: 4px;
+    width: 70px;
+}
+.newStyle {
+    border:solid 1px green;
+    background-color: aquamarine;
+    border-radius: 4px;
+    width: 160px;
+}
