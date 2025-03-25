@@ -25,20 +25,23 @@
                     console.log("error=", error);
                 });
         }
-        
         fStart();
 
         function fShow(beers) {
-            let html = "<table>";
-            for (let i = 0; i < beers.length; i++) {
-                html += "<tr>";
-                html += "<td>" + beers[i].name + "</td>";
-                html += "<td>" + beers[i].brouwer + "</td>";
-                html += "</tr>";
-            }
-            document.getElementById("output").innerHTML 
-             html += "</table>";
-        }
-</script> 
-</body>
+    let html = "<table border='1'>";  // Added border for clarity
+    for (let i = 0; i < beers.length; i++) {
+        html += "<tr>";
+        html += "<td>" + beers[i].id + "</td>";
+        html += "<td>" + beers[i].naam + "</td>";
+        html += "<td>" + beers[i].brouwer + "</td>";
+        html += "<td>" + beers[i].perc + "</td>";
+
+        html += "</tr>";
+    }
+    html += "</table>";  // Properly closing the table tag
+    
+    document.getElementById("output").innerHTML = html;  // Replace content instead of appending
+}
+</script>
+        </body>
 </html>
