@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    Output van in JS opgebouwde HTML (zie JS-script)
+    <button onclick="fStart()">Start</button>
+    <div id="output">output div</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.0/axios.min.js"></script>
+    <script>
+        function fStart() {
+            let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=52.51&lon=6.08&units=metric&&lang=nl&appid=9d677bd11ebc5ce51a314bd8bd3a477a';
+            /* console.log("in fStart. URL = " + url); */
+            axios.get(url)
+                .then((response) => {
+                    let weather = response.data;
+                    console.log("weather =", beers);
+                    fShow(weather)
+                })
+                .catch(function (error) {
+                    console.log("error=", error);
+                });
+        }
+        fStart();
+
+        function fShow(weather) {
+            let html = "<table border='1'>";
+                html += "<tr><th>Datum</th><th>Tempertuur</th><th>Vochtigheid</th><th>Bewolking</th><th>Wind</th></tr>";
+            for (let i = 0; i < weather.length; i++) {
+                html += "<tr>";
+                html += "<td>" + dtToDate(weather.list[i].dt) + "</td>";
+                html += "<td>" + weather.list[i].dt_txt + "</td>";
+                html += "<td>" + weather.list[i].main.temp +"&deg;C"+ "</td>";
+                html += "<td>" + weather.list[i].main.humidity + "</td>";
+                html += "<td>" + weather.list[i].main.pressure + "</td>";
+                html += "<td>" + weather.list[i].weather[0].description + "</td>";
+                html += "<td><img src='https://openweathermap.org/img/wn/'" + weather.list[i].weather[0].icon + ".png' alt='" + weather.list[i].weather[0].description + "'></td>";
+                html += "<td>" + weather.list[i].wind.speed + "km/h" + "</td>";
+                html += "</tr>";
+            };
+            html += "</table>";
+
+            document.getElementById("output").innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
+</body>
+</html>
