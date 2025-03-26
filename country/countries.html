@@ -8,18 +8,19 @@
 <body>
     Output van in JS opgebouwde HTML (zie JS-script)
     <button onclick="fStart()">Start</button>
-    <div id="output">output div</div>
+    <div id="output"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.0/axios.min.js"></script>
 <script>
         function fStart() {
-            let url = 'https://15euros.nl/api/bier_basic.php';
+            let urlCountries = 'https://restcountries.com/v3.1/all'
+          //  let url = 'https://15euros.nl/api/bier_basic.php';
             /* console.log("in fStart. URL = " + url); */
-            axios.get(url)
+            axios.get(urlCountries)
                 .then((response) => {
-                    let beers = response.data;
-                    console.log("beers =", beers);
-                    fShow(beers)
+                    let items = response.data;
+                    console.log("items =", items);
+                   fShow(items)
                 })
                 .catch(function (error) {
                     console.log("error=", error);
@@ -27,18 +28,17 @@
         }
         fStart();
 
-        function fShow(beers) {
-    let html = "<table border='1'>"; 
-    for (let i = 0; i < beers.length; i++) {
-        html += "<tr>";
-        html += "<td>" + beers[i].id + "</td>";
-        html += "<td>" + beers[i].naam + "</td>";
-        html += "<td>" + beers[i].brouwer + "</td>";
-        html += "<td>" + beers[i].perc + "</td>";
-        html += "<td>" + beers[i].prijs + "</td>";
-        html += "</tr>";
+        function fShow(items) {
+    let html = ""; 
+    for (let landnr = 0; landnr < items.length; landnr++) {
+        html += items[landnr].name.common + "<br>";
+        html += items[landnr].borders + "<hr>";
+        
+        for(let bordernr = 0; bordernr < items[bordernr].borders.length; bordernr++) {
+            html += items[bordernr].borders[bordernr] + "<br>";
+        }
     };
-    html += "</table>";
+    
     
     document.getElementById("output").innerHTML = html; 
 }
